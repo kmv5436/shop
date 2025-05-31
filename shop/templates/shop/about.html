@@ -11,12 +11,15 @@
         
         <div class="about-grid">
             <div class="about-image">
-                <img src="{% static 'img/about-showroom.jpg' %}" alt="Наш шоу-рум медицинской одежды" class="responsive-img">
+                <img src="{% static 'img/about-showroom.jpg' %}"
+                    alt="Наш шоу-рум медицинской одежды"
+                    class="responsive-img"
+                    style="max-height: 500px; object-fit: cover;">
             </div>
             
             <div class="about-text">
                 <h2>Наша миссия</h2>
-                <p>Мы обеспечиваем медицинских работников качественной, удобной и стильной профессиональной одеждой с 2015 года. Наша продукция сочетает функциональность, комфорт и современный дизайн.</p>
+                <p>Мы обеспечиваем медицинских работников качественной, удобной и стильной профессиональной одеждой с 2025 года. Наша продукция сочетает функциональность, комфорт и современный дизайн.</p>
                 
                 <h2>Наша продукция</h2>
                 <ul class="products-list">
@@ -64,16 +67,32 @@
                 <div class="step">
                     <span class="step-number">1</span>
                     <h3>Разработка дизайна</h3>
+                    <div class="about-image">
+                        <img src="{% static 'img/production-step-1.jpg' %}" 
+                            alt="Разработка дизайна" 
+                            class="responsive-img"
+                            style="max-height: 300px; width: 100%; object-fit: contain;">
+                    </div>
                     <p>Совместно с практикующими врачами создаем удобные и функциональные модели</p>
                 </div>
                 <div class="step">
                     <span class="step-number">2</span>
                     <h3>Пошив</h3>
+                    <div class="about-image">
+                        <img src="{% static 'img/production-step-2.jpg' %}" 
+                            alt="Разработка дизайна" 
+                            class="responsive-img"
+                            style="max-height: 300px; width: 100%; object-fit: contain;">
+                    </div>
                     <p>Используем современное оборудование и контроль качества на каждом этапе</p>
                 </div>
                 <div class="step">
                     <span class="step-number">3</span>
                     <h3>Сертификация</h3>
+                    <img src="{% static 'img/production-step-3.jpg' %}" 
+                            alt="Разработка дизайна" 
+                            class="responsive-img"
+                            style="max-height: 300px; width: 100%; object-fit: contain;">
                     <p>Вся продукция проходит обязательную сертификацию</p>
                 </div>
             </div>

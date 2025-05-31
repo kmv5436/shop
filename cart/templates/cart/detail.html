@@ -31,17 +31,21 @@
               </td>
               <td class="product-col">{{ product.name }}</td>
               <td class="quantity-col">
-                <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                <form action="{% url 'cart:cart_add' product.id %}" method="post" class="d-inline">
                   {{ item.update_quantity_form.quantity }}
                   {{ item.update_quantity_form.override }}
-                  <button type="submit" class="update-btn">⟳</button>
+                  <button type="submit" class="btn btn-sm btn-outline-primary ml-2">
+                    <i class="fas fa-sync-alt"></i> Обновить
+                  </button>
                   {% csrf_token %}
                 </form>
               </td>
-              <td class="remove-col">
-                <form action="{% url 'cart:cart_remove' product.id %}" method="post">
-                  <button type="submit" class="remove-btn">×</button>
+              <td class="actions-col">
+                <form action="{% url 'cart:cart_remove' product.id %}" method="post" class="d-inline">
                   {% csrf_token %}
+                  <button type="submit" class="btn btn-sm btn-danger">
+                    <i class="fas fa-trash-alt"></i> Удалить
+                  </button>
                 </form>
               </td>
               <td class="price-col">{{ item.price }} ₽</td>

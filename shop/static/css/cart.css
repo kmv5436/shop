@@ -329,3 +329,45 @@ input[type="submit"]:hover {
     text-align: center;
   }
 }
+
+/* Стили для выпадающего списка количества */
+.quantity-select {
+    display: inline-block !important;
+    width: auto !important;
+    padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+}
+
+/* Для мобильных устройств */
+@media (max-width: 576px) {
+    .quantity-col form {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    .quantity-col button {
+        margin-left: 0 !important;
+    }
+}
+
+/* Стили для кнопки удаления */
+.actions-col form {
+  display: inline-block;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+/* Иконка корзины */
+.fa-trash-alt {
+  margin-right: 5px;
+}

@@ -1,0 +1,34 @@
+/* Общие стили для изображений */
+.responsive-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Специфичные стили для страницы "О компании" */
+.about-section .about-image {
+    margin: 20px 0;
+}
+
+.about-grid .about-image {
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
+
+.production-steps .about-image {
+    max-width: 400px;
+    margin: 15px auto;
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .about-grid .about-image {
+        max-width: 100%;
+    }
+    
+    .production-steps .about-image {
+        max-width: 100%;
+    }
+}
