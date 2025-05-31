@@ -71,3 +71,24 @@ class Cart:
 
     def get_total_price(self):
         return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
+    
+def get_cart_info(self):
+        """
+        Возвращает информацию о корзине на русском языке (для шаблонов).
+        Пример использования: `cart.get_cart_info()['total_items']` → "3 товара"
+        """
+        total_items = self.__len__()
+        total_price = self.get_total_price()
+
+        # Правильное склонение слова "товар"
+        if total_items % 10 == 1 and total_items % 100 != 11:
+            items_word = "товар"
+        elif 2 <= total_items % 10 <= 4 and (total_items % 100 < 10 or total_items % 100 >= 20):
+            items_word = "товара"
+        else:
+            items_word = "товаров"
+
+        return {
+            "total_items": f"{total_items} {items_word}",
+            "total_price": f"{total_price:.2f} ₽",
+        }

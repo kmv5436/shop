@@ -1,0 +1,83 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block title %}О компании | МедОдежда{% endblock %}
+
+{% block content %}
+<section class="about-section">
+    <div class="container">
+        <h1>О компании "МедОдежда"</h1>
+        <p class="subtitle">Профессиональная медицинская одежда для врачей и медперсонала</p>
+        
+        <div class="about-grid">
+            <div class="about-image">
+                <img src="{% static 'img/about-showroom.jpg' %}" alt="Наш шоу-рум медицинской одежды" class="responsive-img">
+            </div>
+            
+            <div class="about-text">
+                <h2>Наша миссия</h2>
+                <p>Мы обеспечиваем медицинских работников качественной, удобной и стильной профессиональной одеждой с 2015 года. Наша продукция сочетает функциональность, комфорт и современный дизайн.</p>
+                
+                <h2>Наша продукция</h2>
+                <ul class="products-list">
+                    <li><i class="fas fa-check-circle"></i> Медицинские халаты всех размеров</li>
+                    <li><i class="fas fa-check-circle"></i> Хирургические костюмы</li>
+                    <li><i class="fas fa-check-circle"></i> Специальная обувь для операционных</li>
+                    <li><i class="fas fa-check-circle"></i> Защитные маски и шапочки</li>
+                    <li><i class="fas fa-check-circle"></i> Корпоративная медицинская одежда с логотипом</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="advantages-section">
+            <h2>Почему выбирают нашу медицинскую одежду?</h2>
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Качество материалов</h3>
+                    <p>Используем только сертифицированные ткани с повышенной износостойкостью и антибактериальной пропиткой</p>
+                </div>
+                
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3>Эргономичный крой</h3>
+                    <p>Специально разработанные модели для длительного ношения в условиях медучреждений</p>
+                </div>
+                
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Защитные свойства</h3>
+                    <p>Одежда соответствует требованиям СанПиН и обеспечивает необходимый уровень защиты</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="production-section">
+            <h2>Наше производство</h2>
+            <div class="production-steps">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <h3>Разработка дизайна</h3>
+                    <p>Совместно с практикующими врачами создаем удобные и функциональные модели</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <h3>Пошив</h3>
+                    <p>Используем современное оборудование и контроль качества на каждом этапе</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <h3>Сертификация</h3>
+                    <p>Вся продукция проходит обязательную сертификацию</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

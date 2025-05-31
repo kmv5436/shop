@@ -1,0 +1,23 @@
+{% extends "admin/base_site.html" %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('Админка') }}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">{{ site_header|default:_('Администрация') }}</a>
+</h1>
+{% endblock %}
+
+{% block nav-global %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Заменяем 'Orders' на 'Заказы' в меню
+    const menuItems = document.querySelectorAll('#nav-sidebar a');
+    menuItems.forEach(item => {
+        if (item.textContent.trim() === 'Orders') {
+            item.textContent = 'Заказы';
+        }
+    });
+});
+</script>
+{% endblock %}

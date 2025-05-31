@@ -1,20 +1,19 @@
 from django.db import models
 from django.urls import reverse
 
-# Create your models here.
-
 class Category(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, verbose_name='Название')
     slug = models.SlugField(max_length=200,
-                            unique=True)
+                            unique=True,
+                            verbose_name='Слаг')
 
     class Meta:
         ordering = ['name']
         indexes = [
             models.Index(fields=['name']),
         ]
-        verbose_name = 'category'
-        verbose_name_plural = 'categories'
+        verbose_name = 'категория'
+        verbose_name_plural = 'категории'
 
     def __str__(self):
         return self.name
@@ -23,22 +22,23 @@ class Category(models.Model):
         return reverse('shop:product_list_by_category',
                        args=[self.slug])
 
-
-
 class Product(models.Model):
     category = models.ForeignKey(Category,
                                  related_name='products',
-                                 on_delete=models.CASCADE)
-    name = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=200)
+                                 on_delete=models.CASCADE,
+                                 verbose_name='Категория')
+    name = models.CharField(max_length=200, verbose_name='Название')
+    slug = models.SlugField(max_length=200, verbose_name='Слаг')
     image = models.ImageField(upload_to='products/%Y/%m/%d',
-                              blank=True)
-    description = models.TextField(blank=True)
+                              blank=True,
+                              verbose_name='Изображение')
+    description = models.TextField(blank=True, verbose_name='Описание')
     price = models.DecimalField(max_digits=10,
-                                decimal_places=2)
-    available = models.BooleanField(default=True)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+                                decimal_places=2,
+                                verbose_name='Цена')
+    available = models.BooleanField(default=True, verbose_name='Доступен')
+    created = models.DateTimeField(auto_now_add=True, verbose_name='Создан')
+    updated = models.DateTimeField(auto_now=True, verbose_name='Обновлен')
 
     class Meta:
         ordering = ['name']
@@ -47,6 +47,8 @@ class Product(models.Model):
             models.Index(fields=['name']),
             models.Index(fields=['-created']),
         ]
+        verbose_name = 'товар'
+        verbose_name_plural = 'товары'
 
     def __str__(self):
         return self.name

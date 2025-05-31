@@ -2,24 +2,56 @@
 {% load static %}
 
 {% block title %}
-  {{ product.name }}
+  {{ product.name }} | Магазин
 {% endblock %}
+
 {% block content %}
   <div class="product-detail">
-    <img src="{% if product.image %}{{ product.image.url }}{% else %}
-    {% static "img/no_image.png" %}{% endif %}">
+    <!-- Изображение товара -->
+    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}"
+        class="product-detail-image" 
+        alt="{{ product.name }}"
+        loading="lazy">
+  </div>  
+    <!-- Название товара -->
     <h1>{{ product.name }}</h1>
-    <h2>
+    
+    <!-- Категория товара -->
+    <h2 class="product-category">
+      <span>Категория: </span>
       <a href="{{ product.category.get_absolute_url }}">
-        {{ product.category }}
+        {{ product.category.name }}
       </a>
     </h2>
-    <p class="price">${{ product.price }}</p>
-      <form action="{% url "cart:cart_add" product.id %}" method="post">
+    
+    <!-- Цена товара -->
+    <p class="price">
+      <span>Цена: </span>
+      {{ product.price }} ₽  <!-- Заменил $ на ₽ -->
+    </p>
+    
+    <!-- Форма добавления в корзину -->
+    <form action="{% url "cart:cart_add" product.id %}" method="post" class="add-to-cart-form">
       {{ cart_product_form }}
       {% csrf_token %}
-      <input type="submit" value="Add to cart">
+      <button type="submit" class="add-to-cart-btn">
+        🛒 Добавить в корзину  <!-- Заменил "Add to cart" -->
+      </button>
     </form>
-    {{ product.description|linebreaks }}
+    
+    <!-- Описание товара -->
+    <div class="product-description">
+      <h3>Описание товара:</h3>
+      {{ product.description|linebreaks }}
+    </div>
+    
+    <!-- Статус доступности -->
+    <p class="availability">
+      {% if product.available %}
+        ✅ В наличии
+      {% else %}
+        ❌ Нет в наличии
+      {% endif %}
+    </p>
   </div>
 {% endblock %}

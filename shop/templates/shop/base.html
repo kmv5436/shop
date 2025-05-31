@@ -1,33 +1,81 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>{% block title %}My shop{% endblock %}</title>
+<html lang="ru">  <!-- Добавлен язык документа -->
+<head>
+    {% block extrahead %}
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+        <link rel="stylesheet" href="{% static 'css/shop.css' %}">
+    {% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  <!-- Для мобильной адаптации -->
+    <title>{% block title %}Интернет-магазин "Не болей"{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">    
     <link href="{% static "css/base.css" %}" rel="stylesheet">
-  </head>
-  <body>
-    <div id="header">
-      <a href="/" class="logo">My shop</a>
-    </div>
-    <div id="subheader">
-      <div class="cart">
-        {% with total_items=cart|length %}
-          {% if total_items > 0 %}
-            Your cart:
-            <a href="{% url "cart:cart_detail" %}">
-              {{ total_items }} item{{ total_items|pluralize }},
-              ${{ cart.get_total_price }}
+    <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">  <!-- Добавлена иконка сайта -->
+    <link href="{% static 'fontawesome/css/all.min.css' %}" rel="stylesheet">
+    <!-- Добавьте в <head> вместе с favicon.ico -->
+    <link rel="icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
+</head>
+<body>
+    <header id="header">  <!-- Семантический тег -->
+        <div class="container">  <!-- Обертка для центрирования -->
+            <a href="/" class="logo">
+                <span>НЕ БОЛЕЙ</span>  <!-- Логотип -->
+                <small>Аптека здоровья</small>  <!-- Дополнительный текст -->
             </a>
-          {% elif not order %}
-            Your cart is empty.
-          {% endif %}
-        {% endwith %}
-      </div>
+            
+            <nav class="main-menu">  <!-- Основное меню -->
+                <ul>
+                    <li><a href="/">Главная</a></li>
+                    <li><a href="{% url 'shop:product_list' %}">Каталог</a></li>
+                    <li><a href="/about/">О нас</a></li>
+                    <li><a href="/contacts/">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="subheader">
+        <div class="container">
+            <div class="cart">
+                {% with total_items=cart|length %}
+                    {% if total_items > 0 %}
+                        <span class="cart-icon">🛒</span>
+                        <span class="cart-info">
+                            Товаров в корзине:  <!-- Изменен текст -->
+                            <a href="{% url 'cart:cart_detail' %}">
+                                {{ total_items }} шт. на {{ cart.get_total_price }} ₽  <!-- Добавлен символ рубля -->
+                            </a>
+                        </span>
+                    {% elif not order %}
+                        <span class="cart-empty">
+                            <span class="cart-icon"><i class="fas fa-shopping-cart"></i></span>
+                            Ваша корзина пуста
+                        </span>
+                    {% endif %}
+                {% endwith %}
+            </div>
+        </div>
     </div>
-    <div id="content">
-      {% block content %}
-      {% endblock %}
-    </div>
-  </body>
+
+    <main id="content">  <!-- Семантический тег -->
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+
+    <footer id="footer">  <!-- Добавлен подвал -->
+        <div class="container">
+            <p>&copy; {% now "Y" %} Интернет-магазин "Не болей". Все права защищены.</p>
+            <div class="footer-links">
+                <a href="/privacy/">Политика конфиденциальности</a>
+                <a href="/terms/">Условия использования</a>
+            </div>
+        </div>
+    </footer>
+</body>
 </html>
