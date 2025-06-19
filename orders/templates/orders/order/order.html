@@ -1,0 +1,27 @@
+<form method="post">
+    {% csrf_token %}
+    
+    {% for field in form %}
+        {% if field.name != 'privacy_policy' %}
+            <div class="form-group">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.errors %}
+                    <div class="alert alert-danger">{{ field.errors }}</div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endfor %}
+    
+    <div class="form-group form-check">
+        {{ form.privacy_policy }}
+        <label class="form-check-label" for="{{ form.privacy_policy.id_for_label }}">
+            {{ form.privacy_policy.label|safe }}
+        </label>
+        {% if form.privacy_policy.errors %}
+            <div class="alert alert-danger">{{ form.privacy_policy.errors }}</div>
+        {% endif %}
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Оформить заказ</button>
+</form>

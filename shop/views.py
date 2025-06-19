@@ -68,3 +68,10 @@ def contacts(request):
         return render(request, 'shop/contacts.html', {'success': True})
     
     return render(request, 'shop/contacts.html')
+
+
+def privacy_policy(request):
+    return render(request, 'shop/privacy.html')  # Рендерит шаблон privacy.html
+
+def terms_policy(request):
+    return render(request, 'shop/terms.html')  # Рендерит шаблон privacy.html

@@ -9,7 +9,7 @@
     {% endblock %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">  <!-- Для мобильной адаптации -->
-    <title>{% block title %}Интернет-магазин "Не болей"{% endblock %}</title>
+    <title>{% block title %}Интернет-магазин "NEBOLEY"{% endblock %}</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">    
     <link href="{% static "css/base.css" %}" rel="stylesheet">
@@ -23,7 +23,7 @@
     <header id="header">  <!-- Семантический тег -->
         <div class="container">  <!-- Обертка для центрирования -->
             <a href="/" class="logo">
-                <span>НЕ БОЛЕЙ</span>  <!-- Логотип -->
+                <span>NEBOLEY</span>  <!-- Логотип -->
                 <small>Аптека здоровья</small>  <!-- Дополнительный текст -->
             </a>
             
@@ -70,10 +70,10 @@
 
     <footer id="footer">  <!-- Добавлен подвал -->
         <div class="container">
-            <p>&copy; {% now "Y" %} Интернет-магазин "Не болей". Все права защищены.</p>
+            <p>&copy; {% now "Y" %} Интернет-магазин "NEBOLEY". Все права защищены.</p>
             <div class="footer-links">
-                <a href="/privacy/">Политика конфиденциальности</a>
-                <a href="/terms/">Условия использования</a>
+                <a href="{% url 'privacy' %}">Политика конфиденциальности</a>  <!-- Используем имя URL -->
+                <a href="{% url 'terms' %}">Условия использования</a>  
             </div>
         </div>
     </footer>
