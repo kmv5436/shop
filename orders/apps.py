@@ -12,3 +12,5 @@ class OrdersConfig(AppConfig):
         from .models import Order
         Order._meta.verbose_name = 'Заказ'
         Order._meta.verbose_name_plural = 'Заказы'
+        
+     
